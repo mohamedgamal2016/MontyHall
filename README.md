@@ -7,4 +7,4 @@
 
 - Client folder contains fronted react app: 
     - Switch to Client directory
-    - From CMD Run "npm install" before "npm start"
+    - From CMD Run "npm install" then "npm start"
