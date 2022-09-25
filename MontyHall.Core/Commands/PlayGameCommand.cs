@@ -1,5 +1,5 @@
 ﻿using MontyHall.Core.Common.Commands;
-using MontyHall.Core.Common.Extensions.Response;
+using MontyHall.Core.Common.Response;
 using MontyHall.Core.Models;
 using MediatR;
 

@@ -13,9 +13,8 @@ namespace MontyHall.Extensions
             Guard.Against.Null(services, nameof(services));
 
             services.AddTransient<ICommandDispatcher, CommandDispatcher>();
-            services.AddScoped<IGameEngine, GameEngine>();
+            services.AddScoped<IGameEngineService, GameEngineService>();
             services.AddSingleton<IDoorFactory, DoorFactory>();
-            services.AddSingleton<IScoreBoardFactory, ScoreBoardFactory>();
 
             return services;
         }

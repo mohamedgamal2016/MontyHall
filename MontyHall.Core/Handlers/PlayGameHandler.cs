@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using MontyHall.Core.Commands;
 using MontyHall.Core.Common.Commands;
-using MontyHall.Core.Common.Extensions.Response;
+using MontyHall.Core.Common.Response;
 using MontyHall.Core.Models;
 using MontyHall.Core.Services;
 using System.Threading;
@@ -11,8 +11,8 @@ namespace MontyHall.Core.Handlers
 {
     public class PlayGameHandler : IRequestHandler<PlayGameCommand, CommandResult<PayloadResponse<ScoreBoard>>>
     {
-        private readonly IGameEngine _gameEngine;
-        public PlayGameHandler(IGameEngine gameEngine)
+        private readonly IGameEngineService _gameEngine;
+        public PlayGameHandler(IGameEngineService gameEngine)
         {
             _gameEngine = gameEngine;
         }

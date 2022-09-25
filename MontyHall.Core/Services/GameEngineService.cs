@@ -2,31 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using MontyHall.Core.Commands;
 using MontyHall.Core.Common.Commands;
 using MontyHall.Core.Common.Extensions;
-using MontyHall.Core.Common.Extensions.Response;
+using MontyHall.Core.Common.Response;
 using MontyHall.Core.Factories;
 using MontyHall.Core.Models;
 
 namespace MontyHall.Core.Services
 {
-    public class GameEngine : IGameEngine
+    public class GameEngineService : IGameEngineService
     {
         private readonly IDoorFactory _doorFactory;
-        private readonly IScoreBoardFactory _scoreBoardFactory;
-        private readonly ILogger<GameEngine> _logger;
 
         private int[] DOOR_INDEXES = new[] { 0, 1, 2 };
         private List<Door> Doors { get; set; }
 
 
-        public GameEngine(IDoorFactory doorFactory, IScoreBoardFactory scoreBoardFactory, ILogger<GameEngine> logger)
+        public GameEngineService(IDoorFactory doorFactory)
         {
             _doorFactory = doorFactory;
-            _scoreBoardFactory = scoreBoardFactory;
-            _logger = logger;
         }
         protected Random Random { get; set; } = new Random();
 
@@ -60,16 +55,25 @@ namespace MontyHall.Core.Services
                         loss++;
                 }
 
-                var scoreBoard = _scoreBoardFactory.Create(wins, loss, command.Tries, command.IsSwitchStrategyEnabled);
-                return new SuccessCommandResult<PayloadResponse<ScoreBoard>>(
+                var scoreBoard = new ScoreBoard
+                {
+                    Strategy = command.IsSwitchStrategyEnabled ? "Switch Strategy" : "Stay Strategy",
+                    WinCount = wins,
+                    WinPercentage = ((float)wins / command.Tries * 100),
+                    LossCount = loss,
+                    LossPercentage = ((float)loss / command.Tries * 100),
+                };
+
+
+                var result = new SuccessCommandResult<PayloadResponse<ScoreBoard>>(
                     new PayloadResponse<ScoreBoard>
                     {
                         Payload = scoreBoard
                     });
+                return result;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An exception occurred whilst attempting to play");
                 return new UnexpectedCommandResult<PayloadResponse<ScoreBoard>>();
             }
         }

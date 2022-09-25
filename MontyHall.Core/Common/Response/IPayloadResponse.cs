@@ -1,4 +1,4 @@
-﻿namespace MontyHall.Core.Common.Extensions.Response
+﻿namespace MontyHall.Core.Common.Response
 {
     public interface IPayloadResponse<T>
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MontyHall.Core.Common.Extensions.Response
+namespace MontyHall.Core.Common.Response
 {
     public class PayloadListResponse<T>
         where T : class
