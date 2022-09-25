@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1831
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MontyHall.Core", "..\MontyHall.Core\MontyHall.Core.csproj", "{C14D61D8-C590-48D0-8B8B-6ED735BB4E34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MontyHall.Core", "MontyHall.Core\MontyHall.Core.csproj", "{C14D61D8-C590-48D0-8B8B-6ED735BB4E34}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MontyHall.Core.UnitTests", "MontyHall.Core.UnitTests\MontyHall.Core.UnitTests.csproj", "{CA9669DE-39BE-4E40-BC3D-767A0CF0602B}"
 EndProject
